@@ -1,0 +1,17 @@
+﻿.container {
+    padding-top: 20px;
+}
+
+.select2-selection__choice__remove {
+    display: none !important;
+}
+
+label {
+    margin-left: 10px;
+    display: inline-block;
+    margin-bottom: 0px;
+}
+
+body {
+    background-color: #e5b5b3;
+}

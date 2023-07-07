@@ -1,0 +1,226 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Risk.master.cs" Inherits="RiskProfilingApp.Risk" %>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/favicon.png">
+
+    <title>Risk Profiling</title>
+    <!-- Bootstrap CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- bootstrap theme -->
+    <link href="css/bootstrap-theme.css" rel="stylesheet" />
+    <!-- font icon -->
+    <link href="css/elegant-icons-style.css" rel="stylesheet" />
+    <!-- Custom styles -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet" />
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <link href="css/font-awesome.css" rel="stylesheet" />
+    <link href="css/jquery-ui.css" rel="stylesheet" />
+    <link href="css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+    <script type="text/javascript" src="js/all.min.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="js/select2.min.js"></script>
+
+</head>
+
+<body>
+
+    <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true"></asp:ScriptManager>
+
+        <!-- container section start -->
+        <section id="container" class="">
+            <!--header start-->
+
+            <header class="header dark-bg">
+                <div class="toggle-nav">
+                    <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
+                </div>
+
+                <!--logo start-->
+
+                <%--<img src="img/logo3.png" width="200" height="60" />--%>
+                <%--<img src="img/logo1.png" width="200" height="60" />--%>
+                <img src="img/logo5.png" width="200" height="60" />
+                <!--logo end-->
+
+                <div class="top-nav notification-row">
+                    <!-- notificatoin dropdown start-->
+                    <ul class="nav pull-right top-menu">
+
+                        <!-- task notificatoin start -->
+                        <li id="task_notificatoin_bar" class="dropdown">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <i class="icon-task-l"></i>
+                            </a>
+
+                        </li>
+                        <!-- task notificatoin end -->
+                        <!-- inbox notificatoin start-->
+                        <li id="mail_notificatoin_bar" class="dropdown">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <i class="icon-envelope-l"></i>
+                            </a>
+                        </li>
+                        <!-- inbox notificatoin end -->
+                        <!-- alert notification start-->
+                        <li id="alert_notificatoin_bar" class="dropdown">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+
+                                <i class="icon-bell-l"></i>
+                            </a>
+                        </li>
+                        <!-- alert notification end-->
+                        <!-- user login dropdown start-->
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="">
+                                    <b>
+                                        <label id="fullname" runat="server"></label>
+                                    </b>
+                                </span>
+
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu extended logout">
+                                <div class="log-arrow-up"></div>
+                                <li>
+                                    <a href="UserLogin.aspx"><i class="icon_key_alt"></i>Log Out</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- user login dropdown end -->
+                    </ul>
+                    <!-- notificatoin dropdown end-->
+                </div>
+            </header>
+            <!--header end-->
+
+            <!--sidebar start-->
+            <aside>
+                <div id="sidebar" class="nav-collapse ">
+                    <!-- sidebar menu start-->
+                    <ul class="sidebar-menu">
+                        <li class="" id="super1" runat="server">
+                            <a class="" href="RiskProfile.aspx">
+                                <i class="icon_house_alt"></i>
+                                <span>Risk Profiling</span>
+                            </a>
+                        </li>
+
+                         <li class="sub-menu" runat="server" id="complianceSet" visible="false">
+                            <a href="javascript:;" class="">
+                                <i class="icon_archive"></i>
+                                <span>Compliance</span>
+                                <span class="menu-arrow arrow_carrot-right"></span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="ApproveSystemSettings.aspx">Verify</a></li>
+                               <!-- <li><a class="" href="Countries.aspx">Countries</a></li>
+                                <li><a class="" href="Products.aspx">Products</a></li>
+                                <li><a class="" href="Clients.aspx">Client Type</a></li>-->
+                            </ul>
+                        </li>
+                          <li class="sub-menu" runat="server" id="Li1" visible="false">
+                            <a href="SystemSettings.aspx" class="">
+                                <i class="icon_star"></i>
+                                <span>System Settings</span>
+                                <span class="menu-arrow arrow_carrot-right"></span>
+                            </a>
+                           
+                        </li>
+
+                        <li class="sub-menu" runat="server" id="supervisor" visible="true">
+                            <a href="javascript:;" class="">
+                                <i class="icon_desktop"></i>
+                                <span>User Settings</span>
+                                <span class="menu-arrow arrow_carrot-right"></span>
+                            </a>
+                            <ul class="sub">
+                                <li><a class="" id="super4" runat="server" href="ApproveUsers.aspx">Approve Users</a></li>
+                                <li><a class="" id="super5" runat="server" href="UserManagement.aspx">User Management</a></li>
+                            </ul>
+                        </li>
+                        <li class="sub-menu" runat="server" id="supervisor2" visible="true">
+                            <a href="javascript:;" class="">
+                                <i class="icon_archive"></i>
+                                <span>Reports</span>
+                                <span class="menu-arrow arrow_carrot-right"></span>
+                            </a>
+                            <ul class="sub">
+                                <li><a class="" href="UserActivityReport.aspx">User Activity</a></li>
+                                <li><a class="" href="UserReports.aspx">Users</a></li>
+                                <li><a class="" href="Errors.aspx">Errors</a></li>
+                                <li><a class="" href="SodMatrix.aspx">SOD Matrix</a></li>
+                            </ul>
+                        </li>
+                        <li class="">
+                            <a class="" href="UserLogin.aspx">
+                                <i class="icon_lock"></i>
+                                <span>Log Out</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                    <!-- sidebar menu end-->
+                </div>
+            </aside>
+            <!--sidebar end-->
+
+            <!--main content start-->
+            <section id="main-content">
+                <section class="wrapper">
+                    <!-- page start-->
+
+                    <div id="page">
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                        </asp:ContentPlaceHolder>
+                        <!-- /.container-fluid -->
+                    </div>
+                    <!-- page end-->
+                </section>
+            </section>
+
+
+            <!--main content end-->
+
+        </section>
+
+    </form>
+    <!-- container section end -->
+    <!-- javascripts -->
+    <%--<script src="js/jquery.js"></script>--%>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- nice scroll -->
+    <script src="js/jquery.scrollTo.min.js"></script>
+    <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+    <!-- custome script for all page-->
+    <script src="js/scripts.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('._datepicker').datepicker({ dateFormat: 'yy-mm-dd' });
+
+
+            $("#_ddschemeCode").attr("multiple", "multiple");
+            $("#_ddschemeCode").select2({ tags: true });
+        });
+
+    </script>
+
+</body>
+
+</html>
+
+
+
+
